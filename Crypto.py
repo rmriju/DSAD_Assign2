@@ -1,6 +1,8 @@
 # Knapsack Problem - Crypto currency
+fout = None
 
-class CurrenyDetails:
+
+class Currency:
 
     def __init__(self, curr, quant, price, profit):
         self.curr = curr
@@ -14,9 +16,11 @@ class CurrenyDetails:
     def __lt__(self, other):
         return self.cost < other.cost
 
+
 # Greedy Approach
 class FractionalKnapSack:
     """Time Complexity O(n log n)"""
+
     def getMaxProfit(self, crypto, maxsell):
         """function to get maximum value """
         totalProfit = 0
@@ -31,17 +35,18 @@ class FractionalKnapSack:
                 break
 
         crypto = sorted(crypto, key=lambda x: x.curr)
-
-        print("Max Profit =", round(totalProfit, 2))
-        print("Quantity selection Ratio:")
+        global fout
+        self.createOutputFile()
+        print("Max Profit =", round(totalProfit, 2), file=fout)
+        print("Quantity selection Ratio:", file=fout)
         for i in crypto:
-            print(i.curr, ": ", round(i.ratio, 2))
+            print(i.curr, ": ", round(i.ratio, 2), file=fout)
 
-        print("Total Quantity of each coin sold:")
+        print("Total Quantity of each coin sold:", file=fout)
         for i in crypto:
-            print(i.curr, ": ", round(i.sold, 2))
+            print(i.curr, ": ", round(i.sold, 2), file=fout)
 
-    def readFileInput(self):
+    def processCurrencyInput(self):
         file = open("inputPS1.txt")
         content = file.read()
         lines = content.split('\n')
@@ -73,22 +78,33 @@ class FractionalKnapSack:
                             print("Duplicates are not allowed in currency type !")
                             return
                         else:
-                            crypto.append(CurrenyDetails(curr, qty, price, profit))
+                            crypto.append(Currency(curr, qty, price, profit))
                             curr_list.append(curr)
 
         except ValueError:
             print("Program expect maximum spend, quantity, price, and profit as numeric")
             return
-        # except :
-        #     print("Invalid input !")
-        #     return
+        except:
+            print("Invalid input !")
+            return
 
         # sorting items by cost benefit
         cryptoSorted = sorted(crypto, key=lambda x: x.cost, reverse=True)
         self.getMaxProfit(cryptoSorted, maxsell)
 
+    ################################################################
+    # Method will invalidate file content and reopen in append mode
+    ################################################################
+    @staticmethod
+    def createOutputFile() -> object:
+        global fout
+        fout = open("outputPS1.txt", "w")
+        fout.close()
+        fout = open("outputPS1.txt", "a")
+        
+
 
 # Driver Code
 if __name__ == "__main__":
     greedy = FractionalKnapSack()
-    greedy.readFileInput()
+    greedy.processCurrencyInput()

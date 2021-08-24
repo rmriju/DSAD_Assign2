@@ -1,0 +1,15 @@
+Max Profit = 815.33
+Quantity selection Ratio:
+C1 :  1.0
+C2 :  1.0
+C3 :  0
+C4 :  1.0
+C5 :  0.67
+C6 :  0
+Total Quantity of each coin sold:
+C1 :  6.0
+C2 :  8.0
+C3 :  0
+C4 :  2.0
+C5 :  1.33
+C6 :  0
