@@ -35,8 +35,6 @@ class FractionalKnapSack:
                 break
 
         crypto = sorted(crypto, key=lambda x: x.curr)
-        global fout
-        self.createOutputFile()
         print("Max Profit =", round(totalProfit, 2), file=fout)
         print("Quantity selection Ratio:", file=fout)
         for i in crypto:
@@ -52,6 +50,8 @@ class FractionalKnapSack:
         lines = content.split('\n')
         crypto = []
         curr_list = []
+        global fout
+        self.createOutputFile()
         try:
             for line in lines:
                 currency_head = line.split(':')
