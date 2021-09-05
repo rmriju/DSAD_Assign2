@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../DSAD/.idea/DSAD.iml" filepath="$PROJECT_DIR$/../DSAD/.idea/DSAD.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DSAD_Assign2.iml" filepath="$PROJECT_DIR$/.idea/DSAD_Assign2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Maths_Assign2/.idea/Maths_Assign2.iml" filepath="$PROJECT_DIR$/../Maths_Assign2/.idea/Maths_Assign2.iml" />
     </modules>
   </component>
 </project>
